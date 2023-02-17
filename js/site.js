@@ -1,71 +1,89 @@
+// get the user input from the page
+// Controller function
 function getValues() {
 
-    // get values from the page
+    // get the values from the page
+    let count = document.getElementById('count').value;
     let eliteValue = document.getElementById('eliteValue').value;
     let codeValue = document.getElementById('codeValue').value;
-    let stopValue = document.getElementById('stopValue').value;
 
-    // parse our inputs as numbers
+    // parse string into ints
+    count = parseInt(count);
     eliteValue = parseInt(eliteValue);
     codeValue = parseInt(codeValue);
-    stopValue = parseInt(stopValue);
 
-    // verify our inputs ARE numbers
-
-    if (Number.isInteger(eliteValue) && Number.isInteger(codeValue) && Number.isInteger(stopValue) && stopValue < 5000)
-    {
-    // if they are, then generate numbers
-        let numbersArray = generateFizzBuzz(eliteValue, codeValue, stopValue)
-
-    // then display on the page
-        displayFizzBuzz(numbersArray, eliteValue, codeValue);
+    // verify inputs are numbers
+    if (isNaN(count) && isNaN(eliteValue) && isNaN(codeValue)) {
+        // if they are not, tell our user!
+        Swal.fire(
+            {
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Only whole numbers are allowed for FizzBuzz!'
+            }
+        );
+    } else if (count > 5000) {
+        // if the count is greater than 5000, tell our user!
+        Swal.fire(
+            {
+                icon: 'error',
+                title: 'Oops!',
+                text: 'Hey pal, I can\'t count that high!'
+            }
+        );
     } else {
-        Swal.fire( {
-            icon: 'error',
-            title: 'Oops!',
-            text: "Please enter valid inputs!"
-        });
+        // if they are numbers, generate numbers
+        let elitecodeArray = generateEliteCode(count, eliteValue, codeValue);
+        // then display them on the page
+        displayEliteCode(elitecodeArray);
     }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 // generate our numbers
-// Logic Function
-function generateFizzBuzz(eliteValue, codeValue, stopValue) {
+// Logic function
+function generateEliteCode(end, elite, code) {
 
-    let eliteCodeValues = [];
+    let tableHTML = '';
 
-    for(let i = 1; i <= stopValue; i++) {
-        
-        let value = i; 
+    for (let i = 1; i <= end; i++) {
 
-        if(value % eliteValue == 0 && value % codeValue == 0) {
-            value = 'EliteCode'
-        } else if(value % codeValue == 0) {
-            value = 'Code';
-        } else if(value % eliteValue == 0) {
-            value = 'Elite';
+        let value=i;
+        let className='' ;
+
+        if (value % (elite * code) ===0 && value != 0) {
+             value='EliteCode';
+             className = 'elitecode';
+        } else if (value % code===0 && value !=0) {
+            value='Code';
+            className='code'
+        } else if (value % elite===0 && value !=0) {
+            value='Elite';
+            className='elite';
+        } if (i % 5===0) {
+            tableHTML +='<tr>';
         }
 
-        eliteCodeValues.push(value);
+        let tableRow = `<td class='${className}'>${value}</td>`;
+        tableHTML += tableRow;
+
+        if ((i + 1) % 5 === 0) {
+            tableHTML += '</tr>';
+        }
     }
 
-    return eliteCodeValues;
+        return tableHTML;
 }
 
 // display them on the page
-// View Function
-function displayFizzBuzz(fizzbuzzes) {
-    
+// View function
+function displayEliteCode(arr) {
     let tableBody = document.getElementById('results');
 
-    let tableHtml = "";
+    tableBody.innerHTML = arr;
 
-    for(let i = 0; i < fizzbuzzes.length; i++) {
-        let fizzbuzzesvalue = fizzbuzzes[i];
-        
-        tableHtml += `<tr class=""><td>"${fizzbuzzesvalue}"</td></tr>`;
-    }
-
-
-    tableBody.innerHTML = tableHtml;
 }

@@ -84,11 +84,11 @@
                         </div>
                         <div class="col">
                             <p>Stop Value</p>
-                            <input id="stopValue" type="number" class="form-control" placeholder="Stop Value"
+                            <input id="count" type="number" class="form-control" placeholder="Stop Value"
                                 aria-label="Ending Value" value="100" />
                         </div>
                         <div class="col d-grid py-4">
-                            <button class="btn btn-dark" id="btnSubmit" type="button">Go</button>
+                            <button class="btn btn-dark" id="btnSubmit" type="button" onclick="getValues()" >Go</button>
                         </div>
                     </form>
                     <div class="table-responsive">
@@ -135,7 +135,7 @@
         <!-- custom JS -->
         <script src="/js/site.js"></script>
         <script>
-            document.getElementById('btnSubmit').addEventListener('click', getValues);
+            // document.getElementById('btnSubmit').addEventListener('click', getValues);
         </script>
     </body>
 
