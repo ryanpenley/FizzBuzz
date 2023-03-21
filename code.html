@@ -169,9 +169,27 @@
                 </div>
                 <!-- Code Description -->
                 <div class="col-12 col-lg-4">
-                    <p>The code is structured in one function</p>
-                    <h5><code>displayMessage()</code></h5>
-                    <p>This function displays the message in a Sweet Alert.</p>
+                    <p>The code is structured in three functions with the second one doing the logic that makes FizzBuzz
+                        work.</p>
+                    <h5><code>getValues()</code></h5>
+                    <p>This function gets the value from the HTML page that the user has input and assigns them to the variables that 
+                        first checks that they are in fact numbers, if a non-number is present it will present a Sweet Alert saying that only numbers are allowed, 
+                        and if the ending number is greater than 5000 it will present a Sweet Alert that it will not accept numbers that big.  
+                        Then these variables get passed to the logic function.
+                    </p>
+                    <h5><code>generateEliteCode()</code></h5>
+                    <p>This function is the logic function it receives the parameters from the getValues function that
+                        the user has input and first creates a table in the HTML doc. Then this function performs a for
+                        loop that will loop through each number until it gets to the end value, each time it increments
+                        by 1. Inside of this for loop it checks each number to see if it's divisable by the "EliteCode" 
+                        variable, if it is it'll print "EliteCode", if not then it'll check if the number is divisable 
+                        by the "Code" value, if so it'll print "Code." Lastly, it'll check if the number is divisable by 
+                        the "Elite" value, if so it'll print "Elite" and if not it will print the number.  
+                        This will loop through the entire array of numbers.
+                    </p>
+                    <h5><code>displayEliteCode()</code></h5>
+                    <p>This function is the display function it receives the parameter "arr" from the getValues function then displays the results in the HTML table.
+                    </p>
                 </div>
             </div>
         </main>
@@ -186,9 +204,12 @@
                         <img src="/img/RPWhite logo - no background.svg" height="60">
                     </div>
                     <div class="col text-center text-lg-center">
-                        <a href="https://www.linkedin.com/in/ryan-penley-459892102/" target="_blank" class="socialicons"><i class="bi bi-linkedin"></i></a>
-                        <a href="https://twitter.com/ryanpenleydev" target="_blank" class="socialicons"><i class="bi bi-twitter"></i></a>
-                        <a href="https://github.com/ryanpenley?tab=repositories" target="_blank" class="socialicons"><i class="bi bi-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ryan-penley-459892102/" target="_blank"
+                            class="socialicons"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://twitter.com/ryanpenleydev" target="_blank" class="socialicons"><i
+                                class="bi bi-twitter"></i></a>
+                        <a href="https://github.com/ryanpenley?tab=repositories" target="_blank" class="socialicons"><i
+                                class="bi bi-github"></i></a>
                     </div>
                 </div>
             </div>
